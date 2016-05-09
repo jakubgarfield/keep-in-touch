@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @friend.name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @friend.contact %>
+</p>
+
+<p>
+  <strong>Catchup period:</strong>
+  <%= @friend.catchup_period %>
+</p>
+
+<%= link_to 'Edit', edit_friend_path(@friend) %> |
+<%= link_to 'Back', friends_path %>

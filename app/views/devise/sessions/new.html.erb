@@ -1,0 +1,3 @@
+<%- resource_class.omniauth_providers.each do |provider| %>
+  <a href="<%= omniauth_authorize_path(resource_name, provider) %>" class="btn btn-social btn-lg btn-google"><i class="fa fa-google"></i>Sign in with <%= omniauth_provider_name(provider) %></a>
+<% end -%>

@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KeepInTouch</title>
+  <title>Keep in Touch: Stay connected with your friends, business partners and colleagues</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<header>
+  <h1><%= link_to "Keep in Touch", root_path %></h1>
+  <p>Stay connected with your friends, business partners and colleagues.</p>
+</header>
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) && msg.length > 0 %>
+    <div class="alert <%= flash_to_bootstrap_classname(name) %>">
+      <p><%= msg %></p>
+    </div>
+  <% end %>
+<% end %>
 
 <%= yield %>
 

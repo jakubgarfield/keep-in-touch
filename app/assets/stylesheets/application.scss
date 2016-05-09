@@ -1,0 +1,7 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "bootstrap-social";
+
+body { max-width: 700px; margin: 0 auto; }
+header h1 a { &, &:visited, &:active, &:hover { color: #333; text-decoration: none; } }
