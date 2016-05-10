@@ -17,10 +17,9 @@ class FriendsController < ApplicationController
 
   def create
     @friend = current_user.friends.build(friend_params)
-    @friend.catchups.build(scheduled: Date.today + @friend.catchup_period.days)
 
     respond_to do |format|
-      if @friend.save
+      if OrganiseCatchup.new(@friend).call
         format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
         format.json { render :show, status: :created, location: @friend }
       else
