@@ -11,15 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509204455) do
+ActiveRecord::Schema.define(version: 20160510035212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "catchups", force: :cascade do |t|
+    t.date    "scheduled", null: false
+    t.integer "friend_id", null: false
+  end
+
   create_table "friends", force: :cascade do |t|
-    t.string   "name"
-    t.string   "contact"
-    t.integer  "catchup_period"
+    t.string   "name",           null: false
+    t.string   "contact",        null: false
+    t.integer  "catchup_period", null: false
+    t.integer  "user_id",        null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

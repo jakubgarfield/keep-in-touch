@@ -16,7 +16,8 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @friend = Friend.new(friend_params)
+    @friend = current_user.friends.build(friend_params)
+    @friend.catchups.build(scheduled: Date.today + @friend.catchup_period.days)
 
     respond_to do |format|
       if @friend.save

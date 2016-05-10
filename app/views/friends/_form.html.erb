@@ -1,8 +1,6 @@
 <%= form_for(@friend) do |f| %>
   <% if @friend.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
-
+    <div class="alert alert-danger">
       <ul>
       <% @friend.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,19 +9,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :contact %><br>
-    <%= f.text_field :contact %>
+  <div class="form-group">
+    <%= f.label :contact %>
+    <%= f.text_field :contact, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :catchup_period %><br>
-    <%= f.number_field :catchup_period %>
+  <div class="form-group">
+    <%= f.label :catchup_period, "Catchup period in days" %>
+    <%= f.number_field :catchup_period, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
