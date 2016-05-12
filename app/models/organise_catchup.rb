@@ -4,7 +4,8 @@ class OrganiseCatchup
   end
 
   def call
-    @friend.catchups.build(scheduled: Date.today + @friend.catchup_period.days)
+    date_offset = @friend.next_catchup ? @friend.next_catchup.scheduled : Date.today
+    @friend.catchups.build(scheduled: date_offset + @friend.catchup_period.days)
     @friend.save
   end
 end

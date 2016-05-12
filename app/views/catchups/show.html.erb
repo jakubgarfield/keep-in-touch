@@ -1,0 +1,14 @@
+<p>
+  <strong>Scheduled:</strong>
+  <%= @catchup.scheduled %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @catchup.status ? @catchup.status : "active" %>
+</p>
+
+<% unless @catchup.in_final_state? %>
+  <p><%= link_to "Finalise", finalise_catchup_path(@catchup), class: "btn btn-success" %> <%= link_to "Postpone", postpone_catchup_path(@catchup), class: "btn btn-warning " %> <%= link_to "Skip", skip_catchup_path(@catchup), class: "btn btn-danger" %></p>
+<% end %>
+<p><%= link_to 'Back', @catchup.friend, class: "btn btn-default" %></p>

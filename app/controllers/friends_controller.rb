@@ -2,14 +2,14 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   def index
-    @friends = Friend.all
+    @friends = current_user.friends.all
   end
 
   def show
   end
 
   def new
-    @friend = Friend.new
+    @friend = current_user.friends.new
   end
 
   def edit
@@ -19,7 +19,7 @@ class FriendsController < ApplicationController
     @friend = current_user.friends.build(friend_params)
 
     respond_to do |format|
-      if OrganiseCatchup.new(@friend).call
+      if @friend.valid? && OrganiseCatchup.new(@friend).call
         format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
         format.json { render :show, status: :created, location: @friend }
       else
@@ -51,7 +51,10 @@ class FriendsController < ApplicationController
 
   private
   def set_friend
-    @friend = Friend.find(params[:id])
+    @friend = current_user.friends.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => e
+    flash[:error] = "This is not your friend."
+    redirect_to friends_path
   end
 
   def friend_params

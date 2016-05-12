@@ -4,4 +4,8 @@
 @import "bootstrap-social";
 
 body { max-width: 700px; margin: 0 auto; }
-header h1 a { &, &:visited, &:active, &:hover { color: #333; text-decoration: none; } }
+header {
+  margin: 2em 0;
+  h1 a { &, &:visited, &:active, &:hover { color: #333; text-decoration: none; } }
+}
+.btn { min-width: 10em; }

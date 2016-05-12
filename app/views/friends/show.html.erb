@@ -10,7 +10,26 @@
 
 <p>
   <strong>Catchup period:</strong>
-  <%= @friend.catchup_period %>
+  <%= @friend.catchup_period %> day<%= @friend.catchup_period == 1 ? "" : "s" %>
 </p>
 
-<p><%= link_to 'Edit', edit_friend_path(@friend) %> | <%= link_to 'Back', friends_path %></p>
+<p><%= link_to 'Edit', edit_friend_path(@friend), class: "btn btn-default" %> <%= link_to 'Back', friends_path, class: "btn btn-default" %></p>
+
+<h2>Catchups</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Scheduled</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friend.catchups.order(scheduled: :desc).each do |catchup| %>
+      <tr>
+        <td><%= link_to catchup.scheduled, catchup %></td>
+        <td><%= catchup.status ? catchup.status : "active" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,6 +1,6 @@
 class Friend < ActiveRecord::Base
   belongs_to :user
-  has_many :catchups
+  has_many :catchups, dependent: :destroy
 
   validates :name, presence: true
   validates :contact, presence: true
