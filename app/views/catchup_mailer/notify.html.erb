@@ -1,0 +1,9 @@
+<p>Hey,</p>
+<p>you should catchup with <%= @friend.name %> at <%= @friend.contact %>.</p>
+<ul>
+  <li><%= link_to "Finalise", finalise_catchup_url(@catchup) %></li>
+  <li><%= link_to "Postpone", postpone_catchup_url(@catchup) %></li>
+  <li><%= link_to "Skip", skip_catchup_url(@catchup) %></li>
+</ul>
+
+<p>Yours,<br /><%= link_to "Keep In Touch", root_url %></p>

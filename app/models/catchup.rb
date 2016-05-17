@@ -5,6 +5,7 @@ class Catchup < ActiveRecord::Base
   FINAL_STATES = [DONE, SKIPPED]
 
   belongs_to :friend
+  has_one :user, through: :friend
   validates :scheduled, presence: true
   validates :status, inclusion: { in: [POSTPONED, SKIPPED, DONE], allow_nil: true }
 
