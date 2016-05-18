@@ -84,8 +84,9 @@ Rails.application.configure do
     enable_starttls_auto: true,
     user_name: Rails.application.secrets.sendgrid_username,
     password: Rails.application.secrets.sendgrid_password,
-    authentication: :plain
+    authentication: :plain,
+    domain: 'keep-in-touch.net'
   }
-  config.action_controller.default_url_options = { host: 'keep-in-touch.net' }
-  config.action_mailer.default_url_options = { :host => 'keep-in-touch.net' }
+  config.action_controller.default_url_options = { host: 'http://keep-in-touch.net' }
+  config.action_mailer.default_url_options = { :host => 'http://keep-in-touch.net' }
 end
