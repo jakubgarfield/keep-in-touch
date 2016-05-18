@@ -5,7 +5,7 @@
         <th>Name</th>
         <th>Contact</th>
         <th>Catchup period</th>
-        <th>Next catchup in</th>
+        <th>Next catchup</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -16,7 +16,7 @@
           <td><%= link_to friend.name, friend %></td>
           <td><%= friend.contact %></td>
           <td><%= friend.catchup_period %> day<%= friend.catchup_period == 1 ? "" : "s" %></td>
-          <td><%= link_to distance_of_time_in_words(Date.today, friend.next_catchup.scheduled), friend.next_catchup %></td>
+          <td><%= link_to friend.next_catchup.scheduled, friend.next_catchup %></td>
           <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
           <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
