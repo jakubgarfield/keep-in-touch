@@ -87,4 +87,5 @@ Rails.application.configure do
     authentication: :plain
   }
   config.action_controller.default_url_options = { host: 'keep-in-touch.net' }
+  config.action_mailer.default_url_options = { :host => 'keep-in-touch.net' }
 end
