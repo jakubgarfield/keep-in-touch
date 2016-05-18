@@ -86,4 +86,5 @@ Rails.application.configure do
     password: Rails.application.secrets.sendgrid_password,
     authentication: :plain
   }
+  config.action_controller.default_url_options = { host: 'keep-in-touch.net' }
 end
